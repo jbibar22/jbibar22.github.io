@@ -1,0 +1,460 @@
+<!DOCTYPE html>
+<html lang="en" class="scroll-smooth">
+<head>
+  <meta charset="UTF-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+  <title>James on Main — Restaurant Website Concept | Bibar Digital</title>
+  <meta
+    name="description"
+    content="A dark upscale restaurant website concept for James on Main, created by Bibar Digital."
+  />
+  <meta name="theme-color" content="#0f0f10" />
+  <script src="https://cdn.tailwindcss.com"></script>
+  <script>
+    tailwind.config = {
+      darkMode: 'class',
+      theme: {
+        extend: {
+          fontFamily: {
+            sans: ['Inter', 'ui-sans-serif', 'system-ui', 'sans-serif'],
+            serif: ['Georgia', 'Times New Roman', 'serif'],
+          },
+          boxShadow: {
+            glow: '0 18px 60px rgba(245,158,11,.12)',
+            soft: '0 12px 30px rgba(0,0,0,.25)',
+          },
+        },
+      },
+    };
+  </script>
+  <link rel="preconnect" href="https://fonts.googleapis.com" />
+  <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin />
+  <link
+    href="https://fonts.googleapis.com/css2?family=Inter:wght@400;500;600;700;800&display=swap"
+    rel="stylesheet"
+  />
+  <style>
+    html, body {
+      font-family: Inter, ui-sans-serif, system-ui, sans-serif;
+      background: #0a0a0b;
+    }
+    * {
+      transition: background-color .25s ease, border-color .25s ease, color .25s ease, transform .25s ease, opacity .25s ease;
+    }
+    .reveal {
+      opacity: 0;
+      transform: translateY(24px);
+    }
+    .reveal.visible {
+      opacity: 1;
+      transform: translateY(0);
+      transition: opacity .8s ease, transform .8s ease;
+    }
+    .gold-gradient {
+      background: linear-gradient(135deg, #f59e0b, #fbbf24, #fde68a);
+    }
+    .text-gold {
+      color: #fbbf24;
+    }
+    .border-gold {
+      border-color: rgba(251,191,36,.35);
+    }
+    .hero-overlay {
+      background:
+        radial-gradient(circle at top right, rgba(251,191,36,.12), transparent 30%),
+        linear-gradient(to bottom, rgba(10,10,11,.35), rgba(10,10,11,.9));
+    }
+  </style>
+</head>
+<body class="bg-[#0a0a0b] text-stone-100 antialiased">
+  <!-- Background -->
+  <div class="fixed inset-0 -z-10 overflow-hidden">
+    <div class="absolute top-0 right-0 h-96 w-96 rounded-full bg-amber-400/10 blur-3xl"></div>
+    <div class="absolute left-0 top-1/3 h-80 w-80 rounded-full bg-orange-500/10 blur-3xl"></div>
+    <div class="absolute bottom-0 left-1/2 h-96 w-96 -translate-x-1/2 rounded-full bg-yellow-300/5 blur-3xl"></div>
+  </div>
+
+  <!-- Header -->
+  <header class="sticky top-0 z-50 border-b border-white/10 bg-[#0a0a0b]/80 backdrop-blur-xl">
+    <div class="mx-auto flex max-w-7xl items-center justify-between px-6 py-4 lg:px-8">
+      <a href="#home" class="flex items-center gap-3">
+        <div class="flex h-11 w-11 items-center justify-center rounded-2xl border border-amber-400/30 bg-amber-400/10 text-sm font-bold text-amber-300">
+          JM
+        </div>
+        <div>
+          <div class="text-base font-semibold tracking-wide text-white">James on Main</div>
+          <div class="text-xs uppercase tracking-[0.22em] text-stone-400">Restaurant Concept</div>
+        </div>
+      </a>
+
+      <nav class="hidden items-center gap-8 md:flex">
+        <a href="#about" class="text-sm font-medium text-stone-300 hover:text-amber-300">About</a>
+        <a href="#menu" class="text-sm font-medium text-stone-300 hover:text-amber-300">Highlights</a>
+        <a href="#reviews" class="text-sm font-medium text-stone-300 hover:text-amber-300">Reviews</a>
+        <a href="#visit" class="text-sm font-medium text-stone-300 hover:text-amber-300">Visit</a>
+      </nav>
+
+      <div class="flex items-center gap-3">
+        <a href="#visit" class="hidden rounded-xl border border-amber-400/30 bg-amber-400/10 px-5 py-3 text-sm font-semibold text-amber-200 hover:bg-amber-400/20 md:inline-flex">
+          Reserve a Table
+        </a>
+
+        <button
+          id="menuBtn"
+          type="button"
+          class="inline-flex h-11 w-11 items-center justify-center rounded-xl border border-white/10 bg-white/5 text-stone-200 md:hidden"
+          aria-label="Open menu"
+        >
+          <svg xmlns="http://www.w3.org/2000/svg" class="h-5 w-5" fill="none" viewBox="0 0 24 24" stroke="currentColor" stroke-width="1.8">
+            <path stroke-linecap="round" stroke-linejoin="round" d="M3.75 6.75h16.5M3.75 12h16.5m-16.5 5.25h16.5" />
+          </svg>
+        </button>
+      </div>
+    </div>
+
+    <div id="mobileMenu" class="hidden border-t border-white/10 bg-[#0a0a0b] px-6 py-4 md:hidden">
+      <nav class="flex flex-col gap-4">
+        <a href="#about" class="mobile-link text-sm font-medium text-stone-300">About</a>
+        <a href="#menu" class="mobile-link text-sm font-medium text-stone-300">Highlights</a>
+        <a href="#reviews" class="mobile-link text-sm font-medium text-stone-300">Reviews</a>
+        <a href="#visit" class="mobile-link text-sm font-medium text-stone-300">Visit</a>
+      </nav>
+    </div>
+  </header>
+
+  <main id="home">
+    <!-- Hero -->
+    <section class="relative overflow-hidden">
+      <div class="absolute inset-0 bg-[url('https://images.unsplash.com/photo-1517248135467-4c7edcad34c4?auto=format&fit=crop&w=1600&q=80')] bg-cover bg-center opacity-25"></div>
+      <div class="hero-overlay absolute inset-0"></div>
+
+      <div class="relative mx-auto max-w-7xl px-6 pb-24 pt-20 lg:px-8 lg:pb-32 lg:pt-28">
+        <div class="max-w-3xl reveal">
+          <div class="mb-6 inline-flex items-center gap-2 rounded-full border border-amber-400/25 bg-amber-400/10 px-4 py-2 text-sm font-medium text-amber-200">
+            <span class="inline-block h-2 w-2 rounded-full bg-amber-300"></span>
+            Dark upscale restaurant website concept by Bibar Digital
+          </div>
+
+          <h1 class="max-w-3xl font-serif text-5xl font-semibold leading-tight tracking-tight text-white sm:text-6xl lg:text-7xl">
+            Elevated dining in the heart of Hackettstown
+          </h1>
+
+          <p class="mt-6 max-w-2xl text-lg leading-8 text-stone-300">
+            Creative New American cuisine, fresh ingredients, thoughtful presentation, and an unforgettable dining experience at James on Main.
+          </p>
+
+          <div class="mt-8 flex flex-col gap-4 sm:flex-row">
+            <a href="#visit" class="inline-flex items-center justify-center rounded-xl bg-amber-400 px-6 py-4 text-base font-semibold text-black hover:bg-amber-300">
+              Reserve a Table
+            </a>
+            <a href="#menu" class="inline-flex items-center justify-center rounded-xl border border-white/15 bg-white/5 px-6 py-4 text-base font-semibold text-white hover:border-amber-300 hover:text-amber-200">
+              View Highlights
+            </a>
+          </div>
+
+          <div class="mt-12 grid max-w-2xl grid-cols-2 gap-4 sm:grid-cols-4">
+            <div class="rounded-2xl border border-white/10 bg-white/5 p-4 backdrop-blur">
+              <div class="text-2xl font-bold text-white">4.8</div>
+              <div class="mt-1 text-sm text-stone-400">Google rating</div>
+            </div>
+            <div class="rounded-2xl border border-white/10 bg-white/5 p-4 backdrop-blur">
+              <div class="text-2xl font-bold text-white">600</div>
+              <div class="mt-1 text-sm text-stone-400">Reviews</div>
+            </div>
+            <div class="rounded-2xl border border-white/10 bg-white/5 p-4 backdrop-blur">
+              <div class="text-2xl font-bold text-white">Dine-In</div>
+              <div class="mt-1 text-sm text-stone-400">Takeout · Delivery</div>
+            </div>
+            <div class="rounded-2xl border border-white/10 bg-white/5 p-4 backdrop-blur">
+              <div class="text-2xl font-bold text-white">5 PM</div>
+              <div class="mt-1 text-sm text-stone-400">Opens Wednesday</div>
+            </div>
+          </div>
+        </div>
+      </div>
+    </section>
+
+    <!-- Concept note -->
+    <section class="mx-auto max-w-7xl px-6 pt-8 lg:px-8">
+      <div class="reveal rounded-3xl border border-amber-400/20 bg-amber-400/5 p-5 text-sm leading-7 text-amber-100">
+        <span class="font-semibold">Concept Website Notice:</span> This is a portfolio concept created by Bibar Digital using publicly visible business information for design showcase purposes.
+      </div>
+    </section>
+
+    <!-- About -->
+    <section id="about" class="mx-auto max-w-7xl px-6 py-20 lg:px-8">
+      <div class="grid gap-10 lg:grid-cols-2 lg:items-center">
+        <div class="reveal">
+          <div class="inline-flex rounded-full border border-white/10 bg-white/5 px-4 py-2 text-sm font-medium text-stone-300">
+            About James on Main
+          </div>
+          <h2 class="mt-6 font-serif text-4xl font-semibold tracking-tight text-white sm:text-5xl">
+            Refined local dining with creative flavor and memorable presentation
+          </h2>
+        </div>
+
+        <div class="reveal">
+          <p class="text-lg leading-8 text-stone-300">
+            James on Main is a standout New American restaurant in Hackettstown known for creative dishes, fresh ingredients, and beautifully presented plates. From intimate dinners to special celebrations, guests consistently praise the restaurant’s warm atmosphere, memorable service, and exceptional flavor in every course.
+          </p>
+
+          <div class="mt-8 grid gap-4 sm:grid-cols-2">
+            <div class="rounded-2xl border border-white/10 bg-white/5 p-5">
+              <div class="text-sm uppercase tracking-[0.2em] text-stone-400">Cuisine</div>
+              <div class="mt-2 text-lg font-semibold text-white">New American</div>
+            </div>
+            <div class="rounded-2xl border border-white/10 bg-white/5 p-5">
+              <div class="text-sm uppercase tracking-[0.2em] text-stone-400">Atmosphere</div>
+              <div class="mt-2 text-lg font-semibold text-white">Upscale · Warm · Local</div>
+            </div>
+          </div>
+        </div>
+      </div>
+    </section>
+
+    <!-- Experience highlights -->
+    <section class="mx-auto max-w-7xl px-6 py-6 lg:px-8">
+      <div class="grid gap-6 md:grid-cols-3">
+        <div class="reveal rounded-3xl border border-white/10 bg-white/5 p-8 shadow-soft">
+          <div class="mb-5 inline-flex h-12 w-12 items-center justify-center rounded-2xl bg-amber-400/10 text-amber-300">01</div>
+          <h3 class="text-xl font-semibold text-white">Fresh Ingredients</h3>
+          <p class="mt-3 text-stone-300">
+            Guests consistently highlight the freshness and quality of the ingredients across the menu.
+          </p>
+        </div>
+
+        <div class="reveal rounded-3xl border border-white/10 bg-white/5 p-8 shadow-soft">
+          <div class="mb-5 inline-flex h-12 w-12 items-center justify-center rounded-2xl bg-amber-400/10 text-amber-300">02</div>
+          <h3 class="text-xl font-semibold text-white">Creative Menu</h3>
+          <p class="mt-3 text-stone-300">
+            Unique and thoughtful flavor combinations bring a more elevated experience to every course.
+          </p>
+        </div>
+
+        <div class="reveal rounded-3xl border border-white/10 bg-white/5 p-8 shadow-soft">
+          <div class="mb-5 inline-flex h-12 w-12 items-center justify-center rounded-2xl bg-amber-400/10 text-amber-300">03</div>
+          <h3 class="text-xl font-semibold text-white">Memorable Dining</h3>
+          <p class="mt-3 text-stone-300">
+            Whether it’s a birthday dinner or a local night out, the experience leaves a lasting impression.
+          </p>
+        </div>
+      </div>
+    </section>
+
+    <!-- Menu highlights -->
+    <section id="menu" class="mx-auto max-w-7xl px-6 py-20 lg:px-8">
+      <div class="reveal mx-auto max-w-3xl text-center">
+        <div class="inline-flex rounded-full border border-white/10 bg-white/5 px-4 py-2 text-sm font-medium text-stone-300">
+          Menu Highlights
+        </div>
+        <h2 class="mt-6 font-serif text-4xl font-semibold tracking-tight text-white sm:text-5xl">
+          A few guest favorites from the menu
+        </h2>
+        <p class="mt-4 text-lg text-stone-300">
+          Popular dishes and favorites mentioned across menu highlights and guest experiences.
+        </p>
+      </div>
+
+      <div class="mt-12 grid gap-6 md:grid-cols-2 xl:grid-cols-3">
+        <div class="reveal rounded-3xl border border-white/10 bg-white/5 p-6">
+          <div class="text-sm uppercase tracking-[0.2em] text-amber-300">Popular</div>
+          <h3 class="mt-3 text-2xl font-semibold text-white">Pain Perdu</h3>
+          <p class="mt-3 text-stone-300">A standout menu favorite with a refined, indulgent presentation.</p>
+        </div>
+
+        <div class="reveal rounded-3xl border border-white/10 bg-white/5 p-6">
+          <div class="text-sm uppercase tracking-[0.2em] text-amber-300">Popular</div>
+          <h3 class="mt-3 text-2xl font-semibold text-white">Oyster</h3>
+          <p class="mt-3 text-stone-300">Fresh and elegant, perfect for guests looking for a more elevated start.</p>
+        </div>
+
+        <div class="reveal rounded-3xl border border-white/10 bg-white/5 p-6">
+          <div class="text-sm uppercase tracking-[0.2em] text-amber-300">Signature</div>
+          <h3 class="mt-3 text-2xl font-semibold text-white">Pork Chop</h3>
+          <p class="mt-3 text-stone-300">A hearty entrée option that fits the restaurant’s bold, flavorful identity.</p>
+        </div>
+
+        <div class="reveal rounded-3xl border border-white/10 bg-white/5 p-6">
+          <div class="text-sm uppercase tracking-[0.2em] text-amber-300">Fresh</div>
+          <h3 class="mt-3 text-2xl font-semibold text-white">Tuna Poke</h3>
+          <p class="mt-3 text-stone-300">Bright, fresh, and modern — a dish that adds balance to the menu selection.</p>
+        </div>
+
+        <div class="reveal rounded-3xl border border-white/10 bg-white/5 p-6">
+          <div class="text-sm uppercase tracking-[0.2em] text-amber-300">Comfort</div>
+          <h3 class="mt-3 text-2xl font-semibold text-white">French Onion Soup</h3>
+          <p class="mt-3 text-stone-300">A classic comfort favorite elevated with rich flavor and a polished presentation.</p>
+        </div>
+
+        <div class="reveal rounded-3xl border border-white/10 bg-white/5 p-6">
+          <div class="text-sm uppercase tracking-[0.2em] text-amber-300">Dessert</div>
+          <h3 class="mt-3 text-2xl font-semibold text-white">Chocolate Cake</h3>
+          <p class="mt-3 text-stone-300">A decadent finish to the meal and one of the menu’s most inviting sweet options.</p>
+        </div>
+      </div>
+    </section>
+
+    <!-- Why guests love it -->
+    <section class="mx-auto max-w-7xl px-6 py-10 lg:px-8">
+      <div class="reveal overflow-hidden rounded-[2rem] border border-amber-400/20 bg-gradient-to-r from-amber-400/10 via-white/5 to-transparent p-8 sm:p-10 lg:p-14">
+        <div class="grid gap-8 lg:grid-cols-[1.1fr_.9fr] lg:items-center">
+          <div>
+            <h2 class="font-serif text-3xl font-semibold tracking-tight text-white sm:text-4xl">
+              Loved by locals, praised for quality, remembered for the experience
+            </h2>
+            <p class="mt-4 max-w-2xl text-lg text-stone-300">
+              Reviews consistently highlight creative flavors, beautiful presentation, fresh ingredients, and an experience that feels special from start to finish.
+            </p>
+          </div>
+          <div class="grid gap-4 sm:grid-cols-2">
+            <div class="rounded-2xl border border-white/10 bg-black/20 p-5">
+              <div class="text-3xl font-bold text-white">4.8★</div>
+              <div class="mt-1 text-sm text-stone-400">Highly rated dining experience</div>
+            </div>
+            <div class="rounded-2xl border border-white/10 bg-black/20 p-5">
+              <div class="text-3xl font-bold text-white">600</div>
+              <div class="mt-1 text-sm text-stone-400">Google reviews and counting</div>
+            </div>
+          </div>
+        </div>
+      </div>
+    </section>
+
+    <!-- Reviews -->
+    <section id="reviews" class="mx-auto max-w-7xl px-6 py-20 lg:px-8">
+      <div class="reveal mx-auto max-w-3xl text-center">
+        <div class="inline-flex rounded-full border border-white/10 bg-white/5 px-4 py-2 text-sm font-medium text-stone-300">
+          Reviews
+        </div>
+        <h2 class="mt-6 font-serif text-4xl font-semibold tracking-tight text-white sm:text-5xl">
+          Loved by guests for flavor, creativity, and atmosphere
+        </h2>
+      </div>
+
+      <div class="mt-12 grid gap-6 lg:grid-cols-3">
+        <article class="reveal rounded-3xl border border-white/10 bg-white/5 p-8">
+          <div class="mb-4 text-amber-300">★★★★★</div>
+          <p class="text-stone-300 leading-8">
+            “The menu is filled with unique and creative flavors, and every dish is made with the freshest ingredients. The presentation is consistently stunning, and the quality of the food is simply exceptional.”
+          </p>
+          <div class="mt-6 text-sm font-semibold uppercase tracking-[0.2em] text-stone-400">Dustin Petronaci</div>
+        </article>
+
+        <article class="reveal rounded-3xl border border-white/10 bg-white/5 p-8">
+          <div class="mb-4 text-amber-300">★★★★★</div>
+          <p class="text-stone-300 leading-8">
+            “An incredible experience from start to finish. The food is excellent — that’s an understatement. James on Main is far from hidden at this point because so many people know and love it.”
+          </p>
+          <div class="mt-6 text-sm font-semibold uppercase tracking-[0.2em] text-stone-400">Hannah Rosol</div>
+        </article>
+
+        <article class="reveal rounded-3xl border border-white/10 bg-white/5 p-8">
+          <div class="mb-4 text-amber-300">★★★★★</div>
+          <p class="text-stone-300 leading-8">
+            “One of the best dining experiences I’ve ever had. The menu felt diverse and thoughtful, the team was wonderful, and the whole evening felt special.”
+          </p>
+          <div class="mt-6 text-sm font-semibold uppercase tracking-[0.2em] text-stone-400">v i</div>
+        </article>
+      </div>
+    </section>
+
+    <!-- Visit -->
+    <section id="visit" class="mx-auto max-w-7xl px-6 py-20 lg:px-8">
+      <div class="grid gap-10 lg:grid-cols-[1fr_1.05fr]">
+        <div class="reveal">
+          <div class="inline-flex rounded-full border border-white/10 bg-white/5 px-4 py-2 text-sm font-medium text-stone-300">
+            Visit James on Main
+          </div>
+          <h2 class="mt-6 font-serif text-4xl font-semibold tracking-tight text-white sm:text-5xl">
+            Visit, reserve, or order online
+          </h2>
+          <p class="mt-4 max-w-xl text-lg text-stone-300">
+            Located in Hackettstown, James on Main offers dine-in, takeout, and delivery, with online reservations and menu access available.
+          </p>
+
+          <div class="mt-8 space-y-5 text-stone-300">
+            <div>
+              <div class="text-sm font-semibold uppercase tracking-[0.2em] text-stone-500">Address</div>
+              <div class="mt-1">105 Main St, Hackettstown, NJ 07840, United States</div>
+            </div>
+            <div>
+              <div class="text-sm font-semibold uppercase tracking-[0.2em] text-stone-500">Phone</div>
+              <div class="mt-1">+1 908-852-2131</div>
+            </div>
+            <div>
+              <div class="text-sm font-semibold uppercase tracking-[0.2em] text-stone-500">Hours</div>
+              <div class="mt-1">Closed · Opens 5 PM Wednesday</div>
+            </div>
+            <div>
+              <div class="text-sm font-semibold uppercase tracking-[0.2em] text-stone-500">Dining Options</div>
+              <div class="mt-1">Dine-in · Takeout · Delivery</div>
+            </div>
+          </div>
+
+          <div class="mt-8 flex flex-col gap-4 sm:flex-row">
+            <a href="https://www.resy.com" target="_blank" class="inline-flex items-center justify-center rounded-xl bg-amber-400 px-6 py-4 text-base font-semibold text-black hover:bg-amber-300">
+              Reserve on Resy
+            </a>
+            <a href="https://jamesonmain.net" target="_blank" class="inline-flex items-center justify-center rounded-xl border border-white/15 bg-white/5 px-6 py-4 text-base font-semibold text-white hover:border-amber-300 hover:text-amber-200">
+              Visit Website
+            </a>
+          </div>
+        </div>
+
+        <div class="reveal rounded-[2rem] border border-white/10 bg-white/5 p-4 shadow-soft">
+          <div class="overflow-hidden rounded-[1.5rem] border border-white/10">
+            <iframe
+              title="James on Main location map"
+              src="https://www.google.com/maps?q=105%20Main%20St,%20Hackettstown,%20NJ%2007840&output=embed"
+              class="h-[420px] w-full grayscale contrast-125 brightness-90"
+              loading="lazy"
+              referrerpolicy="no-referrer-when-downgrade"
+            ></iframe>
+          </div>
+        </div>
+      </div>
+    </section>
+
+    <!-- Footer CTA -->
+    <section class="mx-auto max-w-7xl px-6 pb-12 lg:px-8">
+      <div class="reveal rounded-[2rem] border border-amber-400/20 bg-amber-400/5 p-8 text-center sm:p-10">
+        <div class="text-sm uppercase tracking-[0.25em] text-amber-300">Bibar Digital Concept Project</div>
+        <h2 class="mt-4 font-serif text-3xl font-semibold text-white sm:text-4xl">
+          Want a restaurant website concept like this for your own portfolio?
+        </h2>
+        <p class="mx-auto mt-4 max-w-2xl text-stone-300">
+          This concept page was created as a showcase design inspired by publicly visible restaurant information and guest feedback.
+        </p>
+        <div class="mt-8">
+          <a href="index.html" class="inline-flex items-center justify-center rounded-xl bg-white px-6 py-4 text-base font-semibold text-black hover:bg-stone-200">
+            Back to Bibar Digital
+          </a>
+        </div>
+      </div>
+    </section>
+  </main>
+
+  <script>
+    const observer = new IntersectionObserver((entries) => {
+      entries.forEach((entry) => {
+        if (entry.isIntersecting) {
+          entry.target.classList.add('visible');
+        }
+      });
+    }, { threshold: 0.12 });
+
+    document.querySelectorAll('.reveal').forEach((el) => observer.observe(el));
+
+    const menuBtn = document.getElementById('menuBtn');
+    const mobileMenu = document.getElementById('mobileMenu');
+
+    menuBtn.addEventListener('click', () => {
+      mobileMenu.classList.toggle('hidden');
+    });
+
+    document.querySelectorAll('.mobile-link').forEach(link => {
+      link.addEventListener('click', () => mobileMenu.classList.add('hidden'));
+    });
+  </script>
+</body>
+</html>
